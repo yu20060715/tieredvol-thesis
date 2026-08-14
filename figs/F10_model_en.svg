@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">Figure F10 Bottleneck model vs. measured (multiple weight sets, B@x4 + D)</text>
+
+  <rect x="600" y="40" width="16" height="14" fill="#1a73e8"/><text x="622" y="52" font-size="12">Model (§3.3)</text>
+  <rect x="700" y="40" width="16" height="14" fill="#188038"/><text x="722" y="52" font-size="12">Measured</text>
+
+  <g font-size="11">
+    <text x="80" y="104" text-anchor="end">4000</text>
+    <text x="80" y="184" text-anchor="end">3000</text>
+    <text x="80" y="264" text-anchor="end">2000</text>
+    <text x="80" y="344" text-anchor="end">1000</text>
+    <text x="80" y="424" text-anchor="end">0</text>
+  </g>
+  <line x1="100" y1="100" x2="100" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <line x1="100" y1="420" x2="860" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <g stroke="#cccccc" stroke-width="1">
+    <line x1="100" y1="180" x2="860" y2="180"/>
+    <line x1="100" y1="260" x2="860" y2="260"/>
+    <line x1="100" y1="340" x2="860" y2="340"/>
+  </g>
+
+  <rect x="132" y="255" width="54" height="165" fill="#1a73e8"/>
+  <rect x="192" y="254" width="54" height="166" fill="#188038"/>
+  <rect x="342" y="136" width="54" height="284" fill="#1a73e8"/>
+  <rect x="402" y="136" width="54" height="284" fill="#188038"/>
+  <rect x="552" y="151" width="54" height="269" fill="#1a73e8"/>
+  <rect x="612" y="150" width="54" height="270" fill="#188038"/>
+  <rect x="762" y="152" width="54" height="268" fill="#1a73e8"/>
+  <rect x="822" y="156" width="54" height="264" fill="#188038"/>
+
+  <g font-size="10" text-anchor="middle" font-weight="bold">
+    <text x="159" y="247" fill="#1a73e8">2064</text>
+    <text x="219" y="246" fill="#188038">2080</text>
+    <text x="369" y="128" fill="#1a73e8">3571</text>
+    <text x="429" y="128" fill="#188038">3547</text>
+    <text x="579" y="143" fill="#1a73e8">3364</text>
+    <text x="639" y="142" fill="#188038">3370</text>
+    <text x="789" y="132" fill="#1a73e8">3354</text>
+    <text x="849" y="132" fill="#188038">3300</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle">
+    <text x="190" y="448">S1 [1]</text>
+    <text x="400" y="448">S2 [37:27]</text>
+    <text x="610" y="448">S3 [64:30:10]</text>
+    <text x="810" y="448">S4 [64:27:9:4]</text>
+  </g>
+
+  <line x1="430" y1="120" x2="545" y2="120" stroke="#444444" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="488" y="112" text-anchor="middle" font-size="11" fill="#444444">±5% band</text>
+
+  <rect x="60" y="466" width="780" height="40" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.2"/>
+  <text x="80" y="486" font-size="12">All S1–S4 model predictions land within ±5%; S4 drained 3300 vs model 3354 (−1.6%, borrow off, §6.3.1).</text>
+  <text x="80" y="502" font-size="11" fill="#666666">Model: T = minᵢ(soloᵢ × ΣW/wᵢ), DMI-aware budget (§3.3.3); S3 = solo_A+DMI, S4 = solo_A×104/64 (borrow off).</text>
+</svg>

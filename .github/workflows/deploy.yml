@@ -1,0 +1,40 @@
+name: Deploy site to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: site
+      - uses: actions/checkout@v4
+        with:
+          repository: yu20060715/TieredVol-DRIVER
+          path: driver
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install and build
+        run: |
+          cd site/website
+          TIEREDVOL_DRIVER=$GITHUB_WORKSPACE/driver npm ci
+          TIEREDVOL_DRIVER=$GITHUB_WORKSPACE/driver npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/website/dist
+      - uses: actions/deploy-pages@v4

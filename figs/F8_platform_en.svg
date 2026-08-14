@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+  <rect width="900" height="640" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#444444"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">Figure F8 Experimental platform topology (B85, final slots)</text>
+
+  <rect x="300" y="55" width="300" height="58" rx="8" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="450" y="82" text-anchor="middle" font-size="15" font-weight="bold">CPU (integrated northbridge)</text>
+  <text x="450" y="101" text-anchor="middle" font-size="11" fill="#444">PCIe3.0 controller</text>
+
+  <rect x="700" y="55" width="180" height="58" rx="8" fill="#e6f4ea" stroke="#188038" stroke-width="1.5"/>
+  <text x="790" y="80" text-anchor="middle" font-size="14" font-weight="bold">A: WD SN750</text>
+  <text x="790" y="98" text-anchor="middle" font-size="11" fill="#444">PCIe3.0 x4 (CPU direct)</text>
+
+  <line x1="600" y1="84" x2="690" y2="84" stroke="#188038" stroke-width="3"/>
+  <text x="645" y="74" text-anchor="middle" font-size="11" fill="#188038" font-weight="bold">direct</text>
+
+  <line x1="450" y1="113" x2="450" y2="225" stroke="#d93025" stroke-width="4"/>
+  <text x="470" y="175" font-size="12" fill="#d93025" font-weight="bold">DMI ≈ 1300 MB/s</text>
+  <text x="470" y="192" font-size="10" fill="#d93025">(shared by B+C+D)</text>
+
+  <rect x="300" y="225" width="300" height="58" rx="8" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.5"/>
+  <text x="450" y="252" text-anchor="middle" font-size="15" font-weight="bold">PCH (southbridge)</text>
+  <text x="450" y="271" text-anchor="middle" font-size="11" fill="#444">PCIe2.0 / SATA controller</text>
+
+  <line x1="450" y1="283" x2="450" y2="328" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="380" y1="283" x2="150" y2="360" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="283" x2="450" y2="360" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="520" y1="283" x2="750" y2="360" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="360" width="160" height="52" rx="8" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="150" y="386" text-anchor="middle" font-size="14" font-weight="bold">B: P3 Plus</text>
+  <text x="150" y="402" text-anchor="middle" font-size="11" fill="#444">PCIe2.0 x4 (PCH)</text>
+
+  <rect x="370" y="360" width="160" height="52" rx="8" fill="#fde9d9" stroke="#f9ab00" stroke-width="1.5"/>
+  <text x="450" y="386" text-anchor="middle" font-size="14" font-weight="bold">C: MX500</text>
+  <text x="450" y="402" text-anchor="middle" font-size="11" fill="#444">SATA (also mirror disk)</text>
+
+  <rect x="670" y="360" width="160" height="52" rx="8" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="750" y="386" text-anchor="middle" font-size="14" font-weight="bold">D: WD Blue</text>
+  <text x="750" y="402" text-anchor="middle" font-size="11" fill="#444">SATA</text>
+
+  <rect x="60" y="440" width="780" height="190" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.2"/>
+  <text x="80" y="462" font-size="13" font-weight="bold">Device &amp; measurement baseline (§6.1.1; solo = sequential write on the final topology)</text>
+  <text x="80" y="486" font-size="12">Disk | Interface | Slot | solo (MB/s) | final weight (S4)</text>
+  <text x="80" y="506" font-size="12">A | NVMe PCIe3.0 x4 | CPU direct | ~2080 | 64</text>
+  <text x="80" y="526" font-size="12">B | NVMe PCIe2.0 x4 | PCH | ~1522 | 27</text>
+  <text x="80" y="546" font-size="12">C | SATA SSD | PCH SATA | ~517 | 9</text>
+  <text x="80" y="566" font-size="12">D | SATA SSD | PCH SATA | ~223 | 4</text>
+  <text x="80" y="596" font-size="12" fill="#d93025">S2 [37:27], S3 [64:30:10], S4 [64:27:9:4], MIR 2-disk (A+B→C) all measured on this topology (§6.1.3);</text>
+  <text x="80" y="614" font-size="12" fill="#d93025">slots make x1 vs x4 differ 3.7× (§6.3.5), so the "final slot topology" is a prerequisite for measurement.</text>
+</svg>

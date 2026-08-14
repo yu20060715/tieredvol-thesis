@@ -1,6 +1,10 @@
 # Build artifacts (regenerable via scripts/build_pdf.ps1 / build_pdf.sh)
 thesis.html
 thesis.pdf
+thesis_en.html
+thesis_en.pdf
+thesis.docx
+thesis_en.docx
 
 # Figure PNGs are regenerated from figs/*.svg via scripts/svg2png.ps1
 figs/*.png
@@ -9,3 +13,13 @@ figs/*.png
 *.aux
 *.log
 *.toc
+
+# stray empty lockfile at repo root (npm artifacts live under website/)
+/package-lock.json
+
+# Website (regenerable via website/sync.mjs; synced content not committed)
+website/node_modules/
+website/dist/
+website/src/content/
+website/public/figs/
+website/*.log

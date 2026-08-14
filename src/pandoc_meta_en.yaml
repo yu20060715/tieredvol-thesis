@@ -1,0 +1,21 @@
+title: "Weighted Striping of Heterogeneous Disks: A Device Mapper Target and Performance Model"
+author: "（你的姓名 / Your Name）"
+institute: "National Yunlin University of Science and Technology, Department of Computer Science and Information Engineering"
+date: "2026"
+lang: en
+documentclass: report
+fontsize: 12pt
+geometry: "a4paper, margin=2.5cm"
+toc: true
+toc-depth: 2
+number-sections: true
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+
+# English edition does not need the CJK font setup (that lives in pandoc_meta.yaml).
+header-includes: |
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{float}
+  \floatplacement{figure}{H}

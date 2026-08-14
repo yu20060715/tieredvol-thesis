@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
   <rect width="900" height="620" fill="#ffffff"/>
-  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F5 瓶頸模型幾何示意：T = minᵢ (soloᵢ × ΣW/wᵢ)</text>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">Figure F5 Bottleneck-model geometry: T = minᵢ (soloᵢ × ΣW/wᵢ)</text>
 
-  <text x="230" y="62" text-anchor="middle" font-size="14" font-weight="bold">權重失配 [6:1:1:1]（ΣW = 9）</text>
-  <text x="670" y="62" text-anchor="middle" font-size="14" font-weight="bold">權重匹配（w ∝ solo，ΣW = 31）</text>
+  <text x="230" y="62" text-anchor="middle" font-size="14" font-weight="bold">Mismatched weights [6:1:1:1] (ΣW = 9)</text>
+  <text x="670" y="62" text-anchor="middle" font-size="14" font-weight="bold">Matched weights (w ∝ solo, ΣW = 31)</text>
 
   <g font-size="11">
     <text x="70" y="105" text-anchor="middle">2500</text>
@@ -44,19 +44,19 @@
   </g>
 
   <g font-size="12">
-    <text x="104" y="416" fill="#1a73e8">A：solo 1000 → ×9/6 = 1500</text>
-    <text x="104" y="432" fill="#f9ab00">B：solo 200 → ×9/1 = 1800</text>
-    <text x="104" y="448" fill="#34a853">C：solo 250 → ×9/1 = 2250</text>
-    <text x="104" y="464" fill="#d93025" font-weight="bold">D：solo 100 → ×9/1 = 900 ← 瓶頸</text>
-    <text x="685" y="416" text-anchor="middle" fill="#444444">各碟 soloᵢ×31/wᵢ = 1550 重合</text>
+    <text x="104" y="416" fill="#1a73e8">A: solo 1000 → ×9/6 = 1500</text>
+    <text x="104" y="432" fill="#f9ab00">B: solo 200 → ×9/1 = 1800</text>
+    <text x="104" y="448" fill="#34a853">C: solo 250 → ×9/1 = 2250</text>
+    <text x="104" y="464" fill="#d93025" font-weight="bold">D: solo 100 → ×9/1 = 900 ← bottleneck</text>
+    <text x="685" y="416" text-anchor="middle" fill="#444444">all disks: soloᵢ×31/wᵢ coincide at 1550</text>
   </g>
 
-  <text x="245" y="500" text-anchor="middle" font-size="12" fill="#d93025" font-weight="bold">min = 最慢碟 D：T ≈ 900（即使 D 只拿 1/9 資料）</text>
-  <text x="685" y="500" text-anchor="middle" font-size="12" fill="#188038" font-weight="bold">min = Σsolo = 1550：所有碟同時飽和</text>
+  <text x="245" y="500" text-anchor="middle" font-size="12" fill="#d93025" font-weight="bold">min = slowest disk D: T ≈ 900 (D gets only 1/9 of the data)</text>
+  <text x="685" y="500" text-anchor="middle" font-size="12" fill="#188038" font-weight="bold">min = Σsolo = 1550: all disks saturate simultaneously</text>
 
-  <text x="245" y="534" text-anchor="middle" font-size="12" fill="#666666">權重失配時各線不等高，總吞吐被最矮線（最慢碟）壓住</text>
-  <text x="685" y="534" text-anchor="middle" font-size="12" fill="#666666">權重 ∝ solo 時（推論 3.1）各線重合，無瓶頸碟</text>
+  <text x="245" y="534" text-anchor="middle" font-size="12" fill="#666666">mismatched weights → unequal lines; pinned by the slowest disk</text>
+  <text x="685" y="534" text-anchor="middle" font-size="12" fill="#666666">weights ∝ solo (corollary 3.1): lines coincide, no bottleneck disk</text>
 
-  <text x="450" y="574" text-anchor="middle" font-size="12" fill="#444444">示意值僅說明幾何；實測：排水態 S4 命中 T = D×9 ≈ 1760（6.3.1）</text>
-  <text x="450" y="598" text-anchor="middle" font-size="11" fill="#666666">繪製工具：本檔 SVG（可直用）；量測後可於 pgfplots 重繪版換實測 solo 值</text>
+  <text x="450" y="574" text-anchor="middle" font-size="12" fill="#444444">Illustrative values only for geometry; measured: drained S4 hits T = D×9 ≈ 1760 (§6.3.1)</text>
+  <text x="450" y="598" text-anchor="middle" font-size="11" fill="#666666">Drawn as this SVG (ready to use); a pgfplots redraw can substitute measured solo values</text>
 </svg>

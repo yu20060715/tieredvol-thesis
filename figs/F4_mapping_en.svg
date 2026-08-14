@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+  <rect width="900" height="560" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">Figure F4 Weighted-stripe mapping (weights [3:1], chunk = 1 MB, stripe = 4 MB)</text>
+
+  <text x="120" y="66" font-size="13" font-weight="bold">Logical space L (8 MB window)</text>
+  <rect x="120" y="76" width="660" height="2" fill="#444444"/>
+
+  <rect x="190" y="92" width="420" height="52" rx="3" fill="#eef2fb" stroke="#1a73e8" stroke-width="1.2"/>
+  <text x="400" y="110" text-anchor="middle" font-size="12" font-weight="bold">stripe 0: L[0, 4M)</text>
+  <text x="400" y="128" text-anchor="middle" font-size="11">disk0×3 chunks (L0–L2) + disk1×1 chunk (L3)</text>
+
+  <rect x="622" y="92" width="160" height="52" rx="3" fill="#fdf2e8" stroke="#f9ab00" stroke-width="1.2"/>
+  <text x="702" y="110" text-anchor="middle" font-size="12" font-weight="bold">stripe 1: L[4M, 8M)</text>
+  <text x="702" y="128" text-anchor="middle" font-size="11">disk0×3 (L4–L6)</text>
+  <text x="702" y="142" text-anchor="middle" font-size="11">disk1×1 (L7)</text>
+
+  <g font-size="12">
+    <rect x="190" y="170" width="56" height="40" fill="#d3e3fd" stroke="#1a73e8"/><text x="218" y="195" text-anchor="middle">L0</text>
+    <rect x="250" y="170" width="56" height="40" fill="#d3e3fd" stroke="#1a73e8"/><text x="278" y="195" text-anchor="middle">L1</text>
+    <rect x="310" y="170" width="56" height="40" fill="#d3e3fd" stroke="#1a73e8"/><text x="338" y="195" text-anchor="middle">L2</text>
+    <rect x="370" y="170" width="56" height="40" fill="#e8e8f5" stroke="#1a73e8"/><text x="398" y="195" text-anchor="middle">L3</text>
+    <rect x="430" y="170" width="56" height="40" fill="#fde9d9" stroke="#f9ab00"/><text x="458" y="195" text-anchor="middle">L4</text>
+    <rect x="490" y="170" width="56" height="40" fill="#fde9d9" stroke="#f9ab00"/><text x="518" y="195" text-anchor="middle">L5</text>
+    <rect x="550" y="170" width="56" height="40" fill="#fde9d9" stroke="#f9ab00"/><text x="578" y="195" text-anchor="middle">L6</text>
+    <rect x="610" y="170" width="56" height="40" fill="#f5e6c8" stroke="#f9ab00"/><text x="638" y="195" text-anchor="middle">L7</text>
+  </g>
+
+  <text x="120" y="248" font-size="13" font-weight="bold">Disk 0 (w = 3, receives 3 chunks per stripe)</text>
+  <g font-size="11">
+    <rect x="190" y="258" width="56" height="44" fill="#d3e3fd" stroke="#1a73e8"/><text x="218" y="278" text-anchor="middle">off 0</text><text x="218" y="294" text-anchor="middle" font-size="10" fill="#666">←L0</text>
+    <rect x="250" y="258" width="56" height="44" fill="#d3e3fd" stroke="#1a73e8"/><text x="278" y="278" text-anchor="middle">off 1</text><text x="278" y="294" text-anchor="middle" font-size="10" fill="#666">←L1</text>
+    <rect x="310" y="258" width="56" height="44" fill="#d3e3fd" stroke="#1a73e8"/><text x="338" y="278" text-anchor="middle">off 2</text><text x="338" y="294" text-anchor="middle" font-size="10" fill="#666">←L2</text>
+    <rect x="430" y="258" width="56" height="44" fill="#fde9d9" stroke="#f9ab00"/><text x="458" y="278" text-anchor="middle">off 3</text><text x="458" y="294" text-anchor="middle" font-size="10" fill="#666">←L4</text>
+    <rect x="490" y="258" width="56" height="44" fill="#fde9d9" stroke="#f9ab00"/><text x="518" y="278" text-anchor="middle">off 4</text><text x="518" y="294" text-anchor="middle" font-size="10" fill="#666">←L5</text>
+    <rect x="550" y="258" width="56" height="44" fill="#fde9d9" stroke="#f9ab00"/><text x="578" y="278" text-anchor="middle">off 5</text><text x="578" y="294" text-anchor="middle" font-size="10" fill="#666">←L6</text>
+  </g>
+  <line x1="338" y1="210" x2="218" y2="256" stroke="#888888" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="578" y1="210" x2="458" y2="256" stroke="#888888" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <text x="120" y="336" font-size="13" font-weight="bold">Disk 1 (w = 1, receives 1 chunk per stripe)</text>
+  <g font-size="11">
+    <rect x="190" y="346" width="56" height="44" fill="#e8e8f5" stroke="#1a73e8"/><text x="218" y="366" text-anchor="middle">off 0</text><text x="218" y="382" text-anchor="middle" font-size="10" fill="#666">←L3</text>
+    <rect x="250" y="346" width="56" height="44" fill="#f5e6c8" stroke="#f9ab00"/><text x="278" y="366" text-anchor="middle">off 1</text><text x="278" y="382" text-anchor="middle" font-size="10" fill="#666">←L7</text>
+  </g>
+  <line x1="398" y1="210" x2="218" y2="344" stroke="#888888" stroke-width="1" marker-end="url(#arrow)"/>
+  <line x1="638" y1="210" x2="278" y2="344" stroke="#888888" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <rect x="120" y="420" width="660" height="118" rx="6" fill="#f4f6f8" stroke="#888888" stroke-width="1"/>
+  <text x="140" y="444" font-size="13" font-weight="bold">Mapping formula (§3.2.3):</text>
+  <text x="140" y="466" font-size="12">boundaryᵢ = (c × Σ_{j&lt;i} w_j,  c × Σ_{j≤i} w_j), stripe = c × ΣW</text>
+  <text x="140" y="488" font-size="12">physical(i, s, off) = s × wᵢ × c + (off − boundaryᵢ), off ∈ disk i's interval of boundaryᵢ</text>
+  <text x="140" y="510" font-size="12" fill="#1a73e8">Example: L = 6 MB → s = 1, off = 2M ∈ disk0 interval [0, 3M) → disk0, physical = 1×3M + 2M = 5 MB</text>
+  <text x="140" y="528" font-size="11" fill="#666666">table-less and reproducible; the same L always lands on the same disk/physical address (deterministic, §6.2.3)</text>
+</svg>

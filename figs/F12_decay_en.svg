@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 545" font-family="'Segoe UI','Helvetica Neue',Arial,sans-serif">
+  <rect width="900" height="545" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">Figure F12 SLC flat curve (measured, 8/14 evening second batch, 60s refresh protocol)</text>
+  <text x="450" y="50" text-anchor="middle" font-size="12" fill="#666666">x-axis: cumulative written (GB) | y-axis: instantaneous throughput (MB/s, 1M sequential write, libaio depth 32)</text>
+
+  <g font-size="11">
+    <text x="80" y="104" text-anchor="end">4000</text>
+    <text x="80" y="184" text-anchor="end">3500</text>
+    <text x="80" y="264" text-anchor="end">3000</text>
+    <text x="80" y="344" text-anchor="end">2500</text>
+    <text x="80" y="424" text-anchor="end">2000</text>
+  </g>
+  <line x1="100" y1="100" x2="100" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <line x1="100" y1="420" x2="856" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <g stroke="#cccccc" stroke-width="1">
+    <line x1="100" y1="180" x2="856" y2="180"/>
+    <line x1="100" y1="260" x2="856" y2="260"/>
+    <line x1="100" y1="340" x2="856" y2="340"/>
+  </g>
+  <g font-size="11" text-anchor="middle">
+    <text x="146" y="440">0</text>
+    <text x="420" y="440">32</text>
+    <text x="694" y="440">64</text>
+    <text x="840" y="440">80 (cumulative GB)</text>
+  </g>
+
+  <line x1="100" y1="146" x2="840" y2="146" stroke="#d93025" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="120" y="136" font-size="11" fill="#d93025">model ceiling solo_A×104/64 ≈ 3354 (A is the bottleneck)</text>
+
+  <polyline points="119,266 128,236 138,237 147,226 156,223 165,225 174,221 184,223 193,215 202,242 211,212 220,212 230,216 239,215 248,213 257,218 266,212 276,212 285,236 294,212 303,210 312,213 322,220 331,212 340,210 349,213 358,292 368,212 377,210 386,212 395,220 404,213 414,213 423,213 432,212 441,220 450,216 460,215 469,216 478,230 487,212 496,225 506,216 515,226 524,223 533,215 542,216 552,239 561,220 570,215 579,230 588,228 598,213 607,210 616,201 625,196 634,220 644,199 653,203 662,197 671,201 680,197 690,196 699,199 708,215 717,194 726,197 736,203 745,215 754,201 763,206 772,205 782,226 791,203 800,203 809,201 818,203 828,213 837,208 846,213" fill="none" stroke="#1a73e8" stroke-width="1.2"/>
+  <polyline points="119,266 128,208 138,260 147,258 156,261 165,208 174,230 184,234 193,261 202,271 211,203 220,230 230,247 239,254 248,277 257,213 266,230 276,251 285,269 294,287 303,282 312,215 322,203 331,216 340,247 349,206 358,213 368,272 377,206 386,221 395,282 404,213 414,228 423,286 432,208 441,223 450,226 460,220 469,223 478,212" fill="none" stroke="#188038" stroke-width="1.2"/>
+
+  <g font-size="11">
+    <rect x="620" y="446" width="14" height="10" fill="#1a73e8"/><text x="640" y="455">20G carve (80 points, avg 3278)</text>
+    <rect x="620" y="464" width="14" height="10" fill="#188038"/><text x="640" y="473">100G carve (40 points, avg 3137)</text>
+  </g>
+
+  <text x="90" y="480" font-size="11" fill="#666666">Result: flat throughout, no observable decay — [64:27:9:4] (borrow off) is A-bound; aggregate 1M sequential writes ride the</text>
+  <text x="90" y="496" font-size="11" fill="#666666">ceiling from the start, so the SLC bonus never shows. SLC transients are observable only when A is not the bottleneck</text>
+  <text x="90" y="512" font-size="11" fill="#666666">(e.g., 8/12 cold-state stacking 1981→2661→2787→3091); data: docs/data/slc_curve_{20g,100g}.txt.</text>
+</svg>
