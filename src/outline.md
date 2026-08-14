@@ -1,7 +1,7 @@
 # TieredVol 碩士論文大綱（工作主檔）
 
-- 章節檔：`0_前頁.md`、`ch01_緒論.md` … `ch07_結論與貢獻總結.md`、`附錄_量測協定與配置.md`
-  （一章一檔，中文先行）
+- 章節檔：`00-front.md`、`ch01_introduction.md` … `ch07_conclusion.md`、`appendix-a.md`、`appendix-b.md`
+  （一章一檔；`src/` 中文、`src_en/` 英文，同檔名）
 - 本檔為總控：結構、功能對照、數據索引、圖表清單。改版先改這裡，再展開章節。
 - 位置：`C:\Users\yu\Desktop\TieredVol-thesis\`
 
@@ -21,16 +21,16 @@
 
 | 章 | 檔名 | 一句話摘要 | 主要產出 |
 |----|------|-----------|----------|
-| 前 | 0_前頁.md | 中文摘要＋英文摘要、符號表、縮寫表 | 摘要與符號 |
-| 1 | ch01_緒論.md | 動機（異質碟共存）、問題定義、5 項貢獻、**可追溯性矩陣**、論文架構 | 貢獻清單＋全文地圖 |
-| 2 | ch02_背景與相關研究.md | Linux 儲存堆疊、Device Mapper、既有 target 與 tiering 方案之比較與定位（含學術文獻） | 定位表 |
-| 3 | ch03_系統設計-核心.md | **設計（一）**：架構＋加權條帶映射＋瓶頸模型/auto_weight/DMI-aware＋測試架構設計 | 數學核心 |
-| 4 | ch04_系統設計-進階機制與容錯.md | **設計（二）**：借調/WC/鏡像重建/併發一致性/設定管理＋**決策紀錄表** | 機制與容錯 |
-| 5 | ch05_實作.md | 模組結構、資料結構、關鍵流程、四層測試架構與工具鏈 | 實作對照 |
-| 6 | ch06_實驗評估.md | 環境/協定定義→正確性→性能→對照（含隨機/混寫）→專項→限制 | 主數據表＋判讀 |
-| 7 | ch07_結論與貢獻總結.md | 結論、貢獻總結 | 收束 |
-| 附 A | 附錄_量測協定與配置.md | 三協定操作細則、config 範例、工具鏈用法、計數器判讀、安裝與故障演練 | 可重現操作手冊 |
-| 附 B | 附錄B_失敗與修正紀錄.md | adaptive -44% / SLC 假象 / compound bug / WC 4K / del_timer_sync 死鎖 | 踩坑史＋口試素材 |
+| 前 | 00-front.md | 中文摘要＋英文摘要、符號表、縮寫表 | 摘要與符號 |
+| 1 | ch01_introduction.md | 動機（異質碟共存）、問題定義、5 項貢獻、**可追溯性矩陣**、論文架構 | 貢獻清單＋全文地圖 |
+| 2 | ch02_background.md | Linux 儲存堆疊、Device Mapper、既有 target 與 tiering 方案之比較與定位（含學術文獻） | 定位表 |
+| 3 | ch03_design-core.md | **設計（一）**：架構＋加權條帶映射＋瓶頸模型/auto_weight/DMI-aware＋測試架構設計 | 數學核心 |
+| 4 | ch04_design-advanced.md | **設計（二）**：借調/WC/鏡像重建/併發一致性/設定管理＋**決策紀錄表** | 機制與容錯 |
+| 5 | ch05_implementation.md | 模組結構、資料結構、關鍵流程、四層測試架構與工具鏈 | 實作對照 |
+| 6 | ch06_evaluation.md | 環境/協定定義→正確性→性能→對照（含隨機/混寫）→專項→限制 | 主數據表＋判讀 |
+| 7 | ch07_conclusion.md | 結論、貢獻總結 | 收束 |
+| 附 A | appendix-a.md | 三協定操作細則、config 範例、工具鏈用法、計數器判讀、安裝與故障演練 | 可重現操作手冊 |
+| 附 B | appendix-b.md | adaptive -44% / SLC 假象 / compound bug / WC 4K / del_timer_sync 死鎖 | 踩坑史＋口試素材 |
 
 ---
 
@@ -185,7 +185,7 @@
 
 ## 6. 章節細目（寫作時展開的骨架）
 
-### 前頁 0_前頁.md
+### 前頁 00-front.md
 1. 中文摘要 + 英文摘要
 2. 符號表（n, W, wᵢ, ΣW, c, soloᵢ, T(W), 𝒟, DMI_Budget, block_size, P1/P2/P3）
 3. 縮寫表（dm, DMI, PCH, NVMe, SATA, SLC/TLC, WC, MIR, LVM, bio, kref, crc32c, libaio, io_uring）
@@ -278,7 +278,7 @@
    （borrow off；2517 為 borrow-on 假象已退役）、MIR 讀 3799、vs LVM B@x4 複測
    （1.9x/2.0–2.4x）、6.4.2 隨機/混寫三表（4K 寫 663 vs 570 vs 812 等）、F12
    SLC 平坦曲線（20G 平均 3278、100G 平均 3137，A-bound 封頂）、B4 借調淨損
-    16–29%（borrow-off 為生產選擇）；ch06/ch03/ch07/附錄 B/0_大綱 §4 已同步
+    16–29%（borrow-off 為生產選擇）；ch06/ch03/ch07/附錄 B/outline §4 已同步
 7. ✅ **英語版完成**（2026-08-14）：src_en/ 全 10 檔（0_前頁/ch01–ch07/附錄 A/B）翻譯，
    pandoc_meta_en.yaml＋build_pdf.ps1/sh 支援 `html|pdf|chrome <en>`（輸出
    thesis_en.html/pdf）；中文摘要保留對照；術語（weighted striping、borrow、

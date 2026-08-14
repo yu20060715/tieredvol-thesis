@@ -13,16 +13,13 @@ const DRIVER_DIR = process.env.TIEREDVOL_DRIVER
   : path.resolve(REPO, '..', 'TieredVol-DRIVER')
 
 const RENAME = {
-  '0_前頁.md': '00-front.md',
-  'ch01_緒論.md': 'ch01.md',
-  'ch02_背景與相關研究.md': 'ch02.md',
-  'ch03_系統設計-核心.md': 'ch03.md',
-  'ch04_系統設計-進階機制與容錯.md': 'ch04.md',
-  'ch05_實作.md': 'ch05.md',
-  'ch06_實驗評估.md': 'ch06.md',
-  'ch07_結論與貢獻總結.md': 'ch07.md',
-  '附錄_量測協定與配置.md': 'appendix-a.md',
-  '附錄B_失敗與修正紀錄.md': 'appendix-b.md',
+  'ch01_introduction.md': 'ch01.md',
+  'ch02_background.md': 'ch02.md',
+  'ch03_design-core.md': 'ch03.md',
+  'ch04_design-advanced.md': 'ch04.md',
+  'ch05_implementation.md': 'ch05.md',
+  'ch06_evaluation.md': 'ch06.md',
+  'ch07_conclusion.md': 'ch07.md',
 }
 
 function syncChapters(src, dst) {
@@ -35,7 +32,7 @@ function syncChapters(src, dst) {
   let n = 0
   for (const f of fs.readdirSync(src)) {
     if (!f.endsWith('.md')) continue
-    if (f === '0_大綱.md') continue
+    if (f === 'outline.md') continue
     const out = RENAME[f] || f
     fs.copyFileSync(path.join(src, f), path.join(dst, out))
     n++

@@ -7,35 +7,35 @@ $ErrorActionPreference = "Continue"
 $repo = Split-Path -Parent $PSScriptRoot
 Set-Location $repo
 
-$lang = if ($args.Count -gt 1) { $args[1] } else { "zh" }
+$lang = if ($args.Count -gt 1) { $args[1] } else { "en" }
 
 if ($lang -eq "en") {
   $files = @(
-    "src_en/0_前頁.md",
-    "src_en/ch01_緒論.md",
-    "src_en/ch02_背景與相關研究.md",
-    "src_en/ch03_系統設計-核心.md",
-    "src_en/ch04_系統設計-進階機制與容錯.md",
-    "src_en/ch05_實作.md",
-    "src_en/ch06_實驗評估.md",
-    "src_en/ch07_結論與貢獻總結.md",
-    "src_en/附錄_量測協定與配置.md",
-    "src_en/附錄B_失敗與修正紀錄.md"
+    "src_en/00-front.md",
+    "src_en/ch01_introduction.md",
+    "src_en/ch02_background.md",
+    "src_en/ch03_design-core.md",
+    "src_en/ch04_design-advanced.md",
+    "src_en/ch05_implementation.md",
+    "src_en/ch06_evaluation.md",
+    "src_en/ch07_conclusion.md",
+    "src_en/appendix-a.md",
+    "src_en/appendix-b.md"
   )
   $meta = "src/pandoc_meta_en.yaml"
   $suffix = "_en"
 } else {
   $files = @(
-    "src/0_前頁.md",
-    "src/ch01_緒論.md",
-    "src/ch02_背景與相關研究.md",
-    "src/ch03_系統設計-核心.md",
-    "src/ch04_系統設計-進階機制與容錯.md",
-    "src/ch05_實作.md",
-    "src/ch06_實驗評估.md",
-    "src/ch07_結論與貢獻總結.md",
-    "src/附錄_量測協定與配置.md",
-    "src/附錄B_失敗與修正紀錄.md"
+    "src/00-front.md",
+    "src/ch01_introduction.md",
+    "src/ch02_background.md",
+    "src/ch03_design-core.md",
+    "src/ch04_design-advanced.md",
+    "src/ch05_implementation.md",
+    "src/ch06_evaluation.md",
+    "src/ch07_conclusion.md",
+    "src/appendix-a.md",
+    "src/appendix-b.md"
   )
   $meta = "src/pandoc_meta.yaml"
   $suffix = ""
