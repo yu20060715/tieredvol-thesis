@@ -1,0 +1,8 @@
+# Build artifacts (regenerable via build_pdf.ps1 / build_pdf.sh)
+thesis.html
+thesis.pdf
+
+# pandoc metadata cache
+*.aux
+*.log
+*.toc

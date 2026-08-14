@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+  <rect width="900" height="580" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F2 Linux 儲存堆疊與 Device Mapper 的位置</text>
+
+  <g font-size="13">
+    <rect x="240" y="48" width="420" height="46" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="450" y="69" text-anchor="middle" font-weight="bold">應用程式 / 檔案系統（ext4、XFS）</text>
+    <text x="450" y="86" text-anchor="middle" font-size="11" fill="#444">mount / 目錄結構、頁對齊的 read/write</text>
+
+    <line x1="450" y1="94" x2="450" y2="106" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="240" y="106" width="420" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="450" y="131" text-anchor="middle">Page Cache（頁快取）</text>
+
+    <line x1="450" y1="146" x2="450" y2="158" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="240" y="158" width="420" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="450" y="183" text-anchor="middle">VFS / 通用區塊層（block layer，bio）</text>
+
+    <line x1="450" y1="198" x2="450" y2="210" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <rect x="240" y="210" width="420" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="450" y="235" text-anchor="middle">I/O 排程器（mq-deadline / none）</text>
+
+    <line x1="450" y1="250" x2="450" y2="262" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <rect x="200" y="262" width="500" height="58" rx="6" fill="#e6f4ea" stroke="#188038" stroke-width="2.5"/>
+  <text x="450" y="285" text-anchor="middle" font-size="14" font-weight="bold">Device Mapper 層 —— TieredVol（本論文）</text>
+  <text x="450" y="307" text-anchor="middle" font-size="12">把多顆實體碟組合成單一邏輯裝置（dm target）</text>
+
+  <line x1="150" y1="290" x2="196" y2="290" stroke="#188038" stroke-width="1.5"/>
+  <text x="60" y="286" font-size="12" fill="#188038">可堆疊：</text>
+  <text x="60" y="302" font-size="12" fill="#188038">dm-crypt、</text>
+  <text x="60" y="318" font-size="12" fill="#188038">md（RAID）…</text>
+
+  <line x1="450" y1="320" x2="450" y2="336" stroke="#444" stroke-width="1.5"/>
+  <line x1="270" y1="320" x2="270" y2="336" stroke="#444" stroke-width="1.5"/>
+  <line x1="630" y1="320" x2="630" y2="336" stroke="#444" stroke-width="1.5"/>
+
+  <rect x="150" y="336" width="600" height="40" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.5"/>
+  <text x="450" y="361" text-anchor="middle">實體裝置驅動（NVMe / SATA）＋ DMA</text>
+
+  <line x1="260" y1="376" x2="260" y2="400" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="376" x2="450" y2="400" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="640" y1="376" x2="640" y2="400" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="190" y="400" width="140" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="260" y="429" text-anchor="middle" font-size="13" font-weight="bold">碟 A（NVMe）</text>
+  <rect x="380" y="400" width="140" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="450" y="429" text-anchor="middle" font-size="13" font-weight="bold">碟 B（NVMe）</text>
+  <rect x="570" y="400" width="140" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="640" y="429" text-anchor="middle" font-size="13" font-weight="bold">碟 C/D（SATA）</text>
+
+  <text x="60" y="470" font-size="12" fill="#444">TieredVol 的位置（第二章重點）：</text>
+  <text x="60" y="490" font-size="12" fill="#444">• bio 在通用區塊層生成，流經排程器進入 dm → TieredVol 在 map() 內拆分成</text>
+  <text x="60" y="508" font-size="12" fill="#444">  per-disk sub-bio，各自送到底層驅動，完成後合併回原 bio（3.2.6）；</text>
+  <text x="60" y="528" font-size="12" fill="#444">• 透過 dm 的重新映射機制（DM_MAPIO_REMAPPED / dm_accept_partial_bio）與 io_hints</text>
+  <text x="60" y="546" font-size="12" fill="#444">  與上層協調，達成無鎖、O(1)、確定性（3.2、4.4）。</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F12 SLC 衰減曲線（排水階段，final_s4.sh）</text>
+  <text x="450" y="50" text-anchor="middle" font-size="12" fill="#666666">橫軸：排水累計寫入量（GB）｜縱軸：瞬時吞吐（MB/s，1M 順序寫，libaio depth 32）</text>
+
+  <g font-size="11">
+    <text x="80" y="104" text-anchor="end">4000</text>
+    <text x="80" y="184" text-anchor="end">3000</text>
+    <text x="80" y="264" text-anchor="end">2000</text>
+    <text x="80" y="344" text-anchor="end">1000</text>
+    <text x="80" y="424" text-anchor="end">0</text>
+  </g>
+  <line x1="100" y1="100" x2="100" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <line x1="100" y1="420" x2="840" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <g stroke="#cccccc" stroke-width="1">
+    <line x1="100" y1="180" x2="840" y2="180"/>
+    <line x1="100" y1="260" x2="840" y2="260"/>
+    <line x1="100" y1="340" x2="840" y2="340"/>
+  </g>
+  <g font-size="11" text-anchor="middle">
+    <text x="140" y="440">0</text>
+    <text x="292" y="440">16</text>
+    <text x="445" y="440">32</text>
+    <text x="597" y="440">48</text>
+    <text x="750" y="440">64（累計 GB）</text>
+  </g>
+
+  <line x1="100" y1="112" x2="840" y2="112" stroke="#1a73e8" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="120" y="104" font-size="11" fill="#1a73e8">S4 冷態 fresh ≈ 3091（P2，參考線）</text>
+  <line x1="100" y1="219" x2="840" y2="219" stroke="#188038" stroke-width="1" stroke-dasharray="6,4"/>
+  <text x="120" y="211" font-size="11" fill="#188038">排水態穩態 ≈ 2517（P1，參考線）</text>
+
+  <polyline points="130,116 260,128 390,152 520,182 650,204 740,219" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="770" y="255" font-size="12" fill="#666666" font-weight="bold">佔位：示意衰減形狀，</text>
+  <text x="770" y="273" font-size="12" fill="#666666" font-weight="bold">待實測數據填入</text>
+
+  <text x="130" y="480" font-size="11" fill="#666666">SLC 帶狀：短寫先落 SLC、速率高；隨累計寫入量 SLC 耗盡 → 單調衰減 → TLC 穩態平台。</text>
+  <text x="130" y="498" font-size="11" fill="#666666">此即「為何必須定義 P1/P2/P3 協定」（6.1.2）的直接證據；數據源 final_s4.sh 逐 GB 記錄點。</text>
+</svg>

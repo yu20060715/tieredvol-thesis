@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+  <rect width="900" height="540" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#888888"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F1 異質儲存並存的現實（本研究動機）</text>
+
+  <rect x="60" y="80" width="190" height="230" rx="8" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="155" y="120" text-anchor="middle" font-size="14" font-weight="bold">主機</text>
+  <rect x="85" y="135" width="140" height="44" rx="4" fill="#ffffff" stroke="#1a73e8"/>
+  <text x="155" y="162" text-anchor="middle" font-size="12">CPU（PCIe 直連）</text>
+  <rect x="85" y="190" width="140" height="44" rx="4" fill="#ffffff" stroke="#1a73e8"/>
+  <text x="155" y="214" text-anchor="middle" font-size="12">PCH（DMI）</text>
+  <line x1="155" y1="179" x2="155" y2="188" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="155" y="255" text-anchor="middle" font-size="11" fill="#666666">DMI ≈ 1300 MB/s</text>
+  <text x="155" y="272" text-anchor="middle" font-size="11" fill="#666666">（共享頻寬）</text>
+
+  <line x1="250" y1="118" x2="310" y2="118" stroke="#888888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="170" x2="310" y2="170" stroke="#888888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="222" x2="310" y2="222" stroke="#888888" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="250" y1="274" x2="310" y2="274" stroke="#888888" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <g>
+    <rect x="310" y="94" width="330" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="325" y="114" font-size="13" font-weight="bold">A：WD SN750　NVMe（PCIe3.0 x4，CPU 直連）</text>
+    <text x="325" y="132" font-size="12">順序寫入 solo ≈ 2.0–2.1 GB/s</text>
+    <rect x="310" y="148" width="330" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="325" y="168" font-size="13" font-weight="bold">B：P3 Plus　NVMe（PCIe2.0 x4，PCH）</text>
+    <text x="325" y="186" font-size="12">順序寫入 solo ≈ 1.5 GB/s</text>
+    <rect x="310" y="202" width="330" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="325" y="222" font-size="13" font-weight="bold">C：MX500　SATA SSD</text>
+    <text x="325" y="240" font-size="12">順序寫入 solo ≈ 0.52 GB/s</text>
+    <rect x="310" y="256" width="330" height="48" rx="6" fill="#d3e3fd" stroke="#1a73e8" stroke-width="1.5"/>
+    <text x="325" y="276" font-size="13" font-weight="bold">D：WD Blue　SATA SSD</text>
+    <text x="325" y="294" font-size="12">順序寫入 solo ≈ 0.22–0.27 GB/s</text>
+  </g>
+
+  <text x="700" y="112" text-anchor="middle" font-size="12" font-weight="bold">相對速度</text>
+  <rect x="670" y="128" width="40" height="142" fill="#1a73e8"/>
+  <rect x="730" y="128" width="40" height="104" fill="#1a73e8"/>
+  <rect x="790" y="128" width="40" height="36" fill="#f9ab00"/>
+  <rect x="850" y="128" width="40" height="18" fill="#d93025"/>
+  <text x="690" y="288" text-anchor="middle" font-size="11" font-weight="bold">≈10x</text>
+  <text x="750" y="288" text-anchor="middle" font-size="11" font-weight="bold">≈7x</text>
+  <text x="810" y="288" text-anchor="middle" font-size="11" font-weight="bold">≈2.5x</text>
+  <text x="870" y="288" text-anchor="middle" font-size="11" font-weight="bold">1x</text>
+
+  <rect x="60" y="330" width="780" height="70" rx="6" fill="#fce8e6" stroke="#d93025" stroke-width="1.2"/>
+  <text x="80" y="352" font-size="13" fill="#d93025" font-weight="bold">既有困境（1.1.2）</text>
+  <text x="80" y="372" font-size="12">(1) 手動管理負擔：快碟閒置、慢碟塞車，整體被最慢裝置拖住；</text>
+  <text x="80" y="390" font-size="12">(2) 條帶化假設等速：等權條帶把等量資料餵給慢碟，慢碟成為瓶頸、快碟被拖累。</text>
+
+  <rect x="60" y="412" width="780" height="100" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.2"/>
+  <text x="80" y="434" font-size="13" font-weight="bold">本研究動機</text>
+  <text x="80" y="454" font-size="12">• 讓每筆資料並行分布全部碟，而非「熱的放快碟、冷的放慢碟」；</text>
+  <text x="80" y="472" font-size="12">• 慢碟只分到與其能力匹配的比例，整體吞吐推向瓶頸模型上界；</text>
+  <text x="80" y="490" font-size="12">• 權重選擇有數學模型與工具（auto_weight）支撐，而非憑經驗調參。</text>
+</svg>

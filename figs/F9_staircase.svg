@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F9 主表寫入階梯（B@x4 + D 回池，P1/P3 協定）</text>
+  <text x="450" y="50" text-anchor="middle" font-size="12" fill="#666666">單位 MB/s（順序 1M 寫入，fio libaio depth 32）</text>
+
+  <g font-size="11">
+    <text x="80" y="104" text-anchor="end">4000</text>
+    <text x="80" y="184" text-anchor="end">3000</text>
+    <text x="80" y="264" text-anchor="end">2000</text>
+    <text x="80" y="344" text-anchor="end">1000</text>
+    <text x="80" y="424" text-anchor="end">0</text>
+  </g>
+  <line x1="100" y1="100" x2="100" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <line x1="100" y1="420" x2="840" y2="420" stroke="#444444" stroke-width="1.5"/>
+  <g stroke="#cccccc" stroke-width="1">
+    <line x1="100" y1="180" x2="840" y2="180"/>
+    <line x1="100" y1="260" x2="840" y2="260"/>
+    <line x1="100" y1="340" x2="840" y2="340"/>
+  </g>
+
+  <rect x="130" y="254" width="120" height="166" fill="#1a73e8"/>
+  <rect x="320" y="136" width="120" height="284" fill="#188038"/>
+  <rect x="510" y="150" width="120" height="270" fill="#f9ab00"/>
+  <rect x="700" y="219" width="120" height="201" fill="#d93025"/>
+
+  <g font-size="13" font-weight="bold" text-anchor="middle">
+    <text x="190" y="244" fill="#1a73e8">2080</text>
+    <text x="380" y="126" fill="#188038">3547</text>
+    <text x="570" y="140" fill="#b06000">3370</text>
+    <text x="760" y="209" fill="#d93025">2517</text>
+  </g>
+
+  <g font-size="12" text-anchor="middle">
+    <text x="190" y="448">S1（1 碟：A）</text>
+    <text x="190" y="466">solo 2080</text>
+    <text x="380" y="448">S2（2 碟：A+B）</text>
+    <text x="380" y="466">[37:27]</text>
+    <text x="570" y="448">S3（3 碟：A+B+C）</text>
+    <text x="570" y="466">[64:30:10]</text>
+    <text x="760" y="448">S4（4 碟：A+B+C+D）</text>
+    <text x="760" y="466">[64:27:9:4] 排水態（冷態 3091）</text>
+  </g>
+
+  <text x="760" y="505" text-anchor="middle" font-size="10" fill="#666666">瓶頸轉回 A 碟（DMI 未飽和），排水態 A≈1549</text>
+
+  <line x1="430" y1="120" x2="558" y2="120" stroke="#d93025" stroke-width="1.5"/>
+  <line x1="430" y1="120" x2="430" y2="134" stroke="#d93025" stroke-width="1.5"/>
+  <line x1="558" y1="120" x2="558" y2="148" stroke="#d93025" stroke-width="1.5"/>
+  <text x="494" y="112" text-anchor="middle" font-size="12" fill="#d93025" font-weight="bold">DMI 牆：S3 ≤ S2</text>
+</svg>

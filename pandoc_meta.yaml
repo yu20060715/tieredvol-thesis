@@ -1,0 +1,29 @@
+title: "異質磁碟之加權條帶化裝置映射與性能模型——以 Linux Device Mapper 實作"
+author: "（你的姓名）"
+institute: "國立雲林科技大學 資訊工程系"
+date: "2026 年"
+lang: zh-TW
+documentclass: report
+fontsize: 12pt
+geometry: "a4paper, margin=2.5cm"
+toc: true
+toc-depth: 2
+number-sections: true
+colorlinks: true
+linkcolor: blue
+urlcolor: blue
+
+# 中文字型：依系統可用字型調整。
+#   Linux: Noto Serif CJK TC / Noto Sans CJK TC（fc-list | grep CJK 查）
+#   macOS: "PingFang TC" / "Songti TC"
+#   Windows: "Microsoft JhengHei"
+header-includes: |
+  \usepackage{xeCJK}
+  \setCJKmainfont{Noto Serif CJK TC}
+  \setCJKsansfont{Noto Sans CJK TC}
+  \setmainfont{Times New Roman}
+  \linespread{1.4}
+  \usepackage{booktabs}
+  \usepackage{longtable}
+  \usepackage{float}
+  \floatplacement{figure}{H}

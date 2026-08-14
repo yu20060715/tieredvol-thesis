@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 650" font-family="'Microsoft JhengHei','PingFang SC','SimHei',sans-serif">
+  <rect width="900" height="650" fill="#ffffff"/>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#444444"/>
+    </marker>
+  </defs>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F6 權重借調流程（4.1）</text>
+
+  <rect x="320" y="52" width="260" height="40" rx="6" fill="#e8f0fe" stroke="#1a73e8" stroke-width="1.5"/>
+  <text x="450" y="77" text-anchor="middle" font-size="14" font-weight="bold">WRITE bio 到達</text>
+
+  <polygon points="330,110 480,150 330,190 180,150" fill="#fef7e0" stroke="#f9ab00" stroke-width="1.5"/>
+  <text x="330" y="143" text-anchor="middle" font-size="12">碟 in-flight ≥ watermark？</text>
+  <text x="330" y="158" text-anchor="middle" font-size="12">且寫入整 block 對齊？</text>
+
+  <line x1="300" y1="150" x2="230" y2="150" stroke="#444444" stroke-width="1.5"/>
+  <line x1="230" y1="150" x2="230" y2="218" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="262" y="142" font-size="12" fill="#188038">否（多數 I/O）</text>
+
+  <rect x="90" y="218" width="280" height="52" rx="6" fill="#e6f4ea" stroke="#188038" stroke-width="1.5"/>
+  <text x="230" y="240" text-anchor="middle" font-size="13" font-weight="bold">正常路徑（確定性）</text>
+  <text x="230" y="258" text-anchor="middle" font-size="12">O(1) 無表映射（3.2），無查表開銷</text>
+
+  <line x1="390" y1="150" x2="470" y2="150" stroke="#444444" stroke-width="1.5"/>
+  <line x1="470" y1="150" x2="470" y2="168" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="418" y="142" font-size="12" fill="#d93025">是（少數）</text>
+
+  <rect x="460" y="168" width="360" height="52" rx="6" fill="#fce8e6" stroke="#d93025" stroke-width="1.5"/>
+  <text x="640" y="190" text-anchor="middle" font-size="13" font-weight="bold">選最少負載碟</text>
+  <text x="640" y="208" text-anchor="middle" font-size="12">排除自身 / DEGRADED / 借用區無空間</text>
+
+  <line x1="640" y1="220" x2="640" y2="236" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="460" y="236" width="360" height="44" rx="6" fill="#fce8e6" stroke="#d93025" stroke-width="1.5"/>
+  <text x="640" y="263" text-anchor="middle" font-size="13">借用區全或無配置（block = 128 KB）</text>
+
+  <line x1="640" y1="280" x2="640" y2="296" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="460" y="296" width="360" height="44" rx="6" fill="#fce8e6" stroke="#d93025" stroke-width="1.5"/>
+  <text x="640" y="323" text-anchor="middle" font-size="13">寫入借用區（dst_disk, dst_sector）</text>
+
+  <line x1="640" y1="340" x2="640" y2="356" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="460" y="356" width="360" height="48" rx="6" fill="#fce8e6" stroke="#d93025" stroke-width="1.5"/>
+  <text x="640" y="378" text-anchor="middle" font-size="13" font-weight="bold">記錄 per-block entry</text>
+  <text x="640" y="395" text-anchor="middle" font-size="12">（v2 表 16 B/entry、magic 標示版本）</text>
+
+  <line x1="640" y1="404" x2="640" y2="430" stroke="#444444" stroke-width="1.5"/>
+  <line x1="640" y1="430" x2="640" y2="446" stroke="#444444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <rect x="460" y="446" width="360" height="48" rx="6" fill="#e6f4ea" stroke="#188038" stroke-width="1.5"/>
+  <text x="640" y="468" text-anchor="middle" font-size="13" font-weight="bold">讀取 / 重寫（need==0）</text>
+  <text x="640" y="485" text-anchor="middle" font-size="12">lookup 解析至同一目的地（借出閉包）</text>
+
+  <rect x="60" y="520" width="780" height="46" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.2"/>
+  <text x="80" y="541" font-size="12" fill="#444444">不變式：借出的 block 永遠讀得回來；borrow_off 只停「新」借出，lookup 與重寫不檢查</text>
+  <text x="80" y="557" font-size="12" fill="#444444">開關 → 關閉不影響已借資料一致性</text>
+
+  <rect x="60" y="576" width="780" height="46" rx="6" fill="#f4f6f8" stroke="#5f6368" stroke-width="1.2"/>
+  <text x="80" y="597" font-size="12" fill="#444444">持久化：remove 時存 &lt;config&gt;.borrow（v2、magic）；重建載入 → 跨 reload 位址一致</text>
+  <text x="80" y="613" font-size="12" fill="#444444">（實驗：4 G 寫 + verify 0 錯誤，reload 後映射恢復，見 6.5）</text>
+
+  <text x="230" y="300" text-anchor="middle" font-size="11" fill="#666666">借調是確定性佈局之上的</text>
+  <text x="230" y="316" text-anchor="middle" font-size="11" fill="#666666">例外清單（4.1.3）：</text>
+  <text x="230" y="332" text-anchor="middle" font-size="11" fill="#666666">正常位址仍走 O(1) 公式；</text>
+  <text x="230" y="348" text-anchor="middle" font-size="11" fill="#666666">僅被借出 block 走查表</text>
+</svg>
