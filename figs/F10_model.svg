@@ -20,21 +20,21 @@
     <line x1="100" y1="340" x2="860" y2="340"/>
   </g>
 
-  <rect x="132" y="254" width="54" height="166" fill="#1a73e8"/>
+  <rect x="132" y="255" width="54" height="165" fill="#1a73e8"/>
   <rect x="192" y="254" width="54" height="166" fill="#188038"/>
   <rect x="342" y="136" width="54" height="284" fill="#1a73e8"/>
   <rect x="402" y="136" width="54" height="284" fill="#188038"/>
-  <rect x="552" y="150" width="54" height="270" fill="#1a73e8"/>
+  <rect x="552" y="151" width="54" height="269" fill="#1a73e8"/>
   <rect x="612" y="150" width="54" height="270" fill="#188038"/>
   <rect x="762" y="152" width="54" height="268" fill="#1a73e8"/>
   <rect x="822" y="156" width="54" height="264" fill="#188038"/>
 
   <g font-size="10" text-anchor="middle" font-weight="bold">
-    <text x="159" y="246" fill="#1a73e8">2080</text>
+    <text x="159" y="247" fill="#1a73e8">2064</text>
     <text x="219" y="246" fill="#188038">2080</text>
-    <text x="369" y="128" fill="#1a73e8">3547</text>
+    <text x="369" y="128" fill="#1a73e8">3571</text>
     <text x="429" y="128" fill="#188038">3547</text>
-    <text x="579" y="142" fill="#1a73e8">3370</text>
+    <text x="579" y="143" fill="#1a73e8">3364</text>
     <text x="639" y="142" fill="#188038">3370</text>
     <text x="789" y="132" fill="#1a73e8">3354</text>
     <text x="849" y="132" fill="#188038">3300</text>
