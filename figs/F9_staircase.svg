@@ -21,13 +21,13 @@
   <rect x="130" y="254" width="120" height="166" fill="#1a73e8"/>
   <rect x="320" y="136" width="120" height="284" fill="#188038"/>
   <rect x="510" y="150" width="120" height="270" fill="#f9ab00"/>
-  <rect x="700" y="219" width="120" height="201" fill="#d93025"/>
+  <rect x="700" y="156" width="120" height="264" fill="#d93025"/>
 
   <g font-size="13" font-weight="bold" text-anchor="middle">
     <text x="190" y="244" fill="#1a73e8">2080</text>
     <text x="380" y="126" fill="#188038">3547</text>
     <text x="570" y="140" fill="#b06000">3370</text>
-    <text x="760" y="209" fill="#d93025">2517</text>
+    <text x="760" y="146" fill="#d93025">3300</text>
   </g>
 
   <g font-size="12" text-anchor="middle">
@@ -38,10 +38,10 @@
     <text x="570" y="448">S3（3 碟：A+B+C）</text>
     <text x="570" y="466">[64:30:10]</text>
     <text x="760" y="448">S4（4 碟：A+B+C+D）</text>
-    <text x="760" y="466">[64:27:9:4] 排水態（冷態 3091）</text>
+    <text x="760" y="466">[64:27:9:4] 排水態（borrow off；冷態 3091）</text>
   </g>
 
-  <text x="760" y="505" text-anchor="middle" font-size="10" fill="#666666">瓶頸轉回 A 碟（DMI 未飽和），排水態 A≈1549</text>
+  <text x="760" y="505" text-anchor="middle" font-size="10" fill="#666666">瓶頸轉回 A 碟（DMI 未飽和），模型 solo_A×104/64 ≈ 3354（實測 3300，-1.6%）</text>
 
   <line x1="430" y1="120" x2="558" y2="120" stroke="#d93025" stroke-width="1.5"/>
   <line x1="430" y1="120" x2="430" y2="134" stroke="#d93025" stroke-width="1.5"/>
