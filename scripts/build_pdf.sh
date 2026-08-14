@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# 編譯論文成 PDF / HTML 預覽（Linux，實驗機可用）
-# 需求：pandoc；PDF 另需 texlive-xetex + texlive-lang-chinese（xeCJK）。
-#   SVG→PDF：先執行 scripts/svg2png.sh（figs/*.png）。
-#   也可 `scripts/build_pdf.sh html` 產 HTML 預覽（SVG 原生顯示）。
+# Build the thesis as PDF / HTML preview (Linux, also usable on the experiment machine)
+# Requirements: pandoc; PDF additionally needs texlive-xetex + texlive-lang-chinese (xeCJK).
+#   SVG→PDF: run scripts/svg2png.sh first (figs/*.png).
+#   Or `scripts/build_pdf.sh html` for an HTML preview (SVG renders natively).
 set -euo pipefail
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$REPO"
@@ -35,7 +35,7 @@ if [ "$MODE" = "html" ]; then
     --metadata-file="$META" --from markdown+raw_html
   echo "OK: thesis${SUFFIX}.html"
 elif [ "$MODE" = "docx" ]; then
-  # Word 版：SVG 圖改引用 figs/*.png（Word 無法內嵌 SVG）。
+  # Word edition: switch figure references from figs/*.svg to figs/*.png (Word cannot embed SVG).
   TMP="$(mktemp -d)"
   TMPFILES=()
   for f in "${FILES[@]}"; do

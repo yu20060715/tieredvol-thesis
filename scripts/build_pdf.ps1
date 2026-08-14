@@ -46,15 +46,15 @@ if ($mode -eq "html") {
   pandoc @files -o thesis$suffix.html --embed-resources --standalone --metadata-file=$meta --from markdown+raw_html
   if ($?) { Write-Host "OK: thesis$suffix.html (open in browser; SVG figures render natively)" }
 } elseif ($mode -eq "chrome") {
-  # 不需 TeX 的 PDF 預覽：先建 HTML，再用 Chrome headless 印成 PDF。
+  # PDF preview without TeX: build HTML first, then print it with headless Chrome.
   pandoc @files -o thesis$suffix.html --embed-resources --standalone --metadata-file=$meta --from markdown+raw_html
   $chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"
   if (-not (Test-Path $chrome)) { $chrome = "$env:ProgramFiles(x86)\Microsoft\Edge\Application\msedge.exe" }
   $url = "file:///$((Resolve-Path thesis$suffix.html).Path -replace '\\','/')"
   & $chrome --headless=new --disable-gpu --no-sandbox --print-to-pdf="$repo\thesis$suffix.pdf" $url 2>$null | Out-Null
-  if (Test-Path thesis$suffix.pdf) { Write-Host "OK: thesis$suffix.pdf (Chrome 預覽，非 LaTeX 排版)" }
+  if (Test-Path thesis$suffix.pdf) { Write-Host "OK: thesis$suffix.pdf (Chrome preview, not LaTeX typeset)" }
 } elseif ($mode -eq "docx") {
-  # Word 版：SVG 圖改引用 figs/*.png（Word 無法內嵌 SVG）。
+  # Word edition: switch figure references from figs/*.svg to figs/*.png (Word cannot embed SVG).
   $tmp = Join-Path $repo ".docx_tmp"
   if (Test-Path $tmp) { Remove-Item -Recurse -Force $tmp }
   New-Item -ItemType Directory -Path $tmp | Out-Null
