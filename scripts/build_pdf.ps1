@@ -68,6 +68,17 @@ if ($mode -eq "html") {
   Remove-Item -Recurse -Force $tmp
   if (Test-Path thesis$suffix.docx) { Write-Host "OK: thesis$suffix.docx (tables + PNG figures)" }
 } else {
-  pandoc @files -o thesis$suffix.pdf --metadata-file=$meta --pdf-engine=xelatex
-  if ($?) { Write-Host "OK: thesis$suffix.pdf (note: run svg2png.ps1 first to convert SVG figures)" }
+  # PDF (xelatex): cannot embed SVG, so switch figure references to figs/*.png (run svg2png.ps1 first).
+  $tmp = Join-Path $repo ".pdf_tmp"
+  if (Test-Path $tmp) { Remove-Item -Recurse -Force $tmp }
+  New-Item -ItemType Directory -Path $tmp | Out-Null
+  $tmpFiles = @()
+  foreach ($f in $files) {
+    $out = Join-Path $tmp (Split-Path -Leaf $f)
+    (Get-Content -Raw -Encoding UTF8 $f) -replace 'figs/(F[\w]+)\.svg', '$1.png' | Set-Content -Encoding UTF8 $out
+    $tmpFiles += $out
+  }
+  pandoc @tmpFiles -o thesis$suffix.pdf --metadata-file=$meta --pdf-engine=xelatex --resource-path=figs
+  Remove-Item -Recurse -Force $tmp
+  if (Test-Path thesis$suffix.pdf) { Write-Host "OK: thesis$suffix.pdf (xelatex)" }
 }
