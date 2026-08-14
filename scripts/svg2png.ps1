@@ -1,8 +1,8 @@
 ﻿# Convert all figs/*.svg to PNG using headless Chrome (Windows).
 # Usage: .\svg2png.ps1 [width,height per figure as "WxH"]
 $ErrorActionPreference = "Continue"
-$dir = Split-Path -Parent $MyInvocation.MyCommand.Path
-$figs = Join-Path $dir "figs"
+$repo = Split-Path -Parent $PSScriptRoot
+$figs = Join-Path $repo "figs"
 $chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"
 if (-not (Test-Path $chrome)) {
   $chrome = "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"

@@ -1,6 +1,9 @@
-# Build artifacts (regenerable via build_pdf.ps1 / build_pdf.sh)
+# Build artifacts (regenerable via scripts/build_pdf.ps1 / build_pdf.sh)
 thesis.html
 thesis.pdf
+
+# Figure PNGs are regenerated from figs/*.svg via scripts/svg2png.ps1
+figs/*.png
 
 # pandoc metadata cache
 *.aux
