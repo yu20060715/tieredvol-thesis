@@ -2,7 +2,7 @@
   <rect width="900" height="560" fill="#ffffff"/>
   <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F5 瓶頸模型幾何示意：T = minᵢ (soloᵢ × ΣW/wᵢ)</text>
 
-  <text x="230" y="62" text-anchor="middle" font-size="14" font-weight="bold">權重失配 [6,1,1,1]（ΣW = 9）</text>
+  <text x="230" y="62" text-anchor="middle" font-size="14" font-weight="bold">權重失配 [6:1:1:1]（ΣW = 9）</text>
   <text x="670" y="62" text-anchor="middle" font-size="14" font-weight="bold">權重匹配（w ∝ solo，ΣW = 31）</text>
 
   <g font-size="11">

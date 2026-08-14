@@ -5,7 +5,7 @@
       <path d="M0,0 L0,6 L8,3 z" fill="#888888"/>
     </marker>
   </defs>
-  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F4 加權條帶映射示意（權重 [3,1]，chunk = 1 MB，stripe = 4 MB）</text>
+  <text x="450" y="28" text-anchor="middle" font-size="20" font-weight="bold">圖 F4 加權條帶映射示意（權重 [3:1]，chunk = 1 MB，stripe = 4 MB）</text>
 
   <text x="120" y="66" font-size="13" font-weight="bold">邏輯空間 L</text>
   <rect x="120" y="76" width="660" height="2" fill="#444444"/>
