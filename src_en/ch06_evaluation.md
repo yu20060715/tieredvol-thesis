@@ -371,6 +371,10 @@ On the same platform, compare `dm-striped` (LVM striped [9], equal weight 1:1) a
 > TieredVol wins" holds on both slot topologies; the LVM **sequential** 4 K small-write comparison is still old-topology
 > data (B@x1, LVM ~1.32x faster), while the **random** 4 K comparison is new topology (B@x4, TieredVol +16%, §6.4.2), as
 > annotated in §6.6.
+>
+> Note: the WC 4 K figure of 612 MiB/s in §6.5 is the absolute throughput on the two-drive `tv_s2` config (A.1.4(a)); it is
+> a different configuration from this four-drive B@x1 relative comparison (511 vs 676), so the two are not directly
+> comparable—see §6.5 for the WC coalescing best-case figure.
 
 ### 6.4.2 Random I/O and Mixed Workload Comparison
 
