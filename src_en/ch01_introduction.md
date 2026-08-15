@@ -132,6 +132,11 @@ chosen to reach the bound?
 temporarily offloaded (borrowed) **without breaking the deterministic layout**, to
 compensate for a slow drive's temporary degradation?
 
+> **This item is positioned as a supporting/conditional mechanism**: its primary claim is the
+> consistency invariants that preserve the deterministic layout plus persistence/reload recovery
+> (the correctness layer); the performance benefit holds only when a slow drive is the true
+> bottleneck and is topology-dependent (§6.5). The headline claims remain P1, P2, and P4.
+
 **P4: Multi-device management and fault tolerance.** Can mirroring, rebuild,
 bad-region handling, concurrency consistency, and small-write performance all be
 integrated into **a single target**, without introducing any additional errors along
@@ -151,6 +156,11 @@ The scope of this study is defined as follows:
   block-layer scheduler; everything is done inside the dm target.
 - **Validation platform**: 1–4 drive configurations on a real B85 platform with a
   Linux kernel serve as the validation environment.
+- **Supporting mechanism (borrow) positioning**: weight borrowing is an exception
+  path over the deterministic layout; its claim is primarily mechanism **correctness**
+  (consistency invariants, persistence, and reload recovery), and its performance
+  benefit is a **conditional auxiliary**—it holds only when a slow drive is the true
+  bottleneck and is topology-dependent (§6.5).
 
 Key terminology used in this thesis:
 
@@ -196,6 +206,9 @@ five points:
   persistent, and fully restores after reload (4 G verification, 0 errors).
   Resolves the conflict between "weight mismatch" and "dynamic drive selection
   breaking determinism" (Chapter 4, §4.1 and Chapter 6, §6.5).
+  This contribution claims **mechanism correctness**; the performance gain is a
+  **conditional auxiliary** (holds only when a slow drive is the true bottleneck and
+  is topology-dependent, §6.5).
 
 **Contribution 4: Multi-device management and fault-tolerance integration.**
   Synchronous mirroring, bad-region rebuild (rebuild_badmap), pending-write/read

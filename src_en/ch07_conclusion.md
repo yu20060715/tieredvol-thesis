@@ -43,7 +43,8 @@ otherwise both the model and the data will be distorted**.
 2. **Bottleneck performance model and DMI-aware weight allocation**: proof of `min(solo×ΣW/w)` and cross-scenario verification;
    weight-correction formula under a shared upstream bus (§3.3).
 3. **auto_weight exhaustive automatic weight tool**: automatically derives near-optimal weights from measurements (near-optimal, +70.6%).
-4. **Dynamic weight borrowing**: an exception mechanism on a static layout, with persistence/reload recovery (Chapter 4, §4.1).
+4. **Dynamic weight borrowing**: an exception mechanism on a static layout, with persistence/reload recovery (Chapter 4, §4.1);
+   the claim is primarily mechanism correctness, with the performance benefit conditional (§6.5).
 5. **Multiple mechanisms integrated in a single target**: mirroring, rebuild, bad regions, concurrency consistency, write coalescing (§4.2–4.5).
 6. **Four-layer test architecture and real-platform profiling**: unit → in-kernel simulation → dmsetup → fio; revealing the
    three hardware insights of slots, DMI, and SLC (Chapter 5, §5.8; Chapter 6, §6.3).

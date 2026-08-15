@@ -409,9 +409,16 @@ land on a single drive), 4 K read **+28%**, 1M mixed **~2x** (advantage of 4-dri
 
 ## 6.5 Targeted Tests
 
+> **Positioning of this section**: it validates the **correctness** of the exception and
+> fault-tolerance mechanisms—borrow: consistency invariants and persistence; mirror:
+> read retry and cost trade-offs; WC: read-order semantics and small-write usability.
+> This section makes **no headline performance claims**; performance gains are
+> conditional (see each item).
+
 - **Weight borrowing**: when a slow drive is under high load, whole blocks are offloaded to a fast drive's borrow area; 4 G
   write verify err=0; after `remove`/reload the mapping is restored (`.borrow` persisted)—validating the four consistency
-  invariants of §4.1. **The benefit is topology-dependent** (B4, two sessions on 8/13 and 8/14):
+  invariants of §4.1. **This item's claim is primarily mechanism correctness; the performance gain is a conditional
+  auxiliary—topology-dependent** (B4, two sessions on 8/13 and 8/14):
   - When the slow drive D is truly the bottleneck (6:1:1:1 equal weight): borrowing **+3%** (measured 8/13);
   - At the settled weight [64:27:9:4] (D's share only 3.85%, ≈127 MB/s ≪ solo 229): D is naturally not the bottleneck,
     **nothing to borrow, on≈off (within noise)**—the two are complementary, proving borrowing only has positive benefit in
